@@ -60,11 +60,6 @@
 
 ## Creating AWS Lambda Function for S3 Event Notifications
 
-### Prerequisites
-
-- AWS account
-- Basic knowledge of AWS Lambda and IAM
-
 ### Steps
 
 1. Create Lambda function in AWS Lambda console.
@@ -77,8 +72,7 @@
     - Acknowledge trigger configuration to avoid recursive invocation issues.
     - Click "Add" to create trigger.
 
-## Lambda Function Code
-
+## CSV to JSON from S3 Bucket using Lambda Function
 
 ```python
 import os 
