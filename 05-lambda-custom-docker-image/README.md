@@ -1,14 +1,15 @@
 
 1. **Create a Dockerfile**: This file defines the environment for your Lambda function.
 ```Dockerfile
-# Use the official AWS Lambda Python 3.8 image as the base image
-FROM public.ecr.aws/lambda/python:3.8
+FROM public.ecr.aws/lambda/python:3.9
 
-# Copy the application code to the container
-COPY . /var/task
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
-# Set the CMD to your handler (adjust as needed)
-CMD ["app.lambda_ingest"]
+COPY app ${LAMBDA_TASK_ROOT}/app
+ENV PYTHONPATH=${LAMBDA_TASK_ROOT}/app
+
+CMD [ "app.lambda_transform" ]
 ```
 
 2. **Build the Docker image**: Run the following command in the directory containing your Dockerfile and application code.
